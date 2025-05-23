@@ -15,7 +15,7 @@ function getRandomFilePath() {
   previousAnswer = randomIndex;
   currentAnswer = randomIndex;
 
-  return `lyd/${String(randomIndex).padStart(2, '0')}.flac`;
+  return `lyd-intervaller-c-sekvens/${String(randomIndex).padStart(2, '0')}.flac`;
 }
 
 function playCurrentSound() {
@@ -26,7 +26,7 @@ function playCurrentSound() {
     audio.play();
     isGuessing = true;
   } else {
-    const filePath = `lyd/${String(currentAnswer).padStart(2, '0')}.flac`;
+    const filePath = `lyd-intervaller-c-sekvens/${String(currentAnswer).padStart(2, '0')}.flac`;
     const audio = new Audio(filePath);
     audio.play();
   }

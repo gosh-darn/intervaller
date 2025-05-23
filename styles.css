@@ -127,13 +127,19 @@ button {
   cursor: not-allowed;
 }
 
-#modes {
+#modes1 {
   display: grid;
   grid-template-rows: 1fr 1fr;
   row-gap: 10pt;
 }
 
-#modes a {
+#modes2 {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  row-gap: 10pt;
+}
+
+.modes a {
   padding-left: 15pt;
   padding-right: 15pt;
 }
@@ -151,6 +157,14 @@ button {
   opacity: 0.5;
 }
 
-#mainHeader {
+.frontpageheader {
   margin-top: 60pt;
+}
+
+.frontpageheader h1 {
+  font-size: 25pt;
+}
+
+.subheader h2 {
+  font-size: 14pt;
 }

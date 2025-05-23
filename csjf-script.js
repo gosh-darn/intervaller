@@ -9,13 +9,13 @@ function getRandomFilePath() {
   let randomIndex;
 
   do {
-    randomIndex = Math.floor(Math.random() * 12) + 1;
+    randomIndex = Math.floor(Math.random() * 6) + 1;
   } while (randomIndex === previousAnswer);
 
   previousAnswer = randomIndex;
   currentAnswer = randomIndex;
 
-  return `lyd-intervaller-c-sekvens/${String(randomIndex).padStart(2, '0')}.flac`;
+  return `lyd-akkorder-c-sekvens/${String(randomIndex).padStart(2, '0')}.flac`;
 }
 
 function playCurrentSound() {
@@ -26,7 +26,7 @@ function playCurrentSound() {
     audio.play();
     isGuessing = true;
   } else {
-    const filePath = `lyd-intervaller-c-sekvens/${String(currentAnswer).padStart(2, '0')}.flac`;
+    const filePath = `lyd-akkorder-c-sekvens/${String(currentAnswer).padStart(2, '0')}.flac`;
     const audio = new Audio(filePath);
     audio.play();
   }
@@ -73,7 +73,7 @@ function disableLink(id) {
 }
 
 function enableAllLinks() {
-  for (let i = 1; i <= 12; i++) {
+  for (let i = 1; i <= 6; i++) {
     const link = document.getElementById(String(i));
     link.style.pointerEvents = 'auto';
     link.style.opacity = '1';
@@ -85,7 +85,7 @@ document.getElementById('playButton').addEventListener('click', function (event)
   playCurrentSound();
 });
 
-for (let i = 1; i <= 12; i++) {
+for (let i = 1; i <= 6; i++) {
   document.getElementById(String(i)).addEventListener('click', function (event) {
     event.preventDefault();
     if (!isGuessing || isResetting) return;
