@@ -15,7 +15,7 @@ function getRandomFilePath() {
   previousAnswer = randomIndex;
   currentAnswer = randomIndex;
 
-  return `lyd-akkorder-c-sekvens/${String(randomIndex).padStart(2, '0')}.flac`;
+  return `../lyd-akkorder-c-samtidig/${String(randomIndex).padStart(2, '0')}.flac`;
 }
 
 function playCurrentSound() {
@@ -26,7 +26,7 @@ function playCurrentSound() {
     audio.play();
     isGuessing = true;
   } else {
-    const filePath = `lyd-akkorder-c-sekvens/${String(currentAnswer).padStart(2, '0')}.flac`;
+    const filePath = `../lyd-akkorder-c-samtidig/${String(currentAnswer).padStart(2, '0')}.flac`;
     const audio = new Audio(filePath);
     audio.play();
   }
@@ -103,3 +103,24 @@ for (let i = 1; i <= 6; i++) {
     }
   });
 }
+
+document.addEventListener('keydown', function (event) {
+  // Don't trigger if user is typing in an input/textarea
+  const tag = document.activeElement.tagName;
+  if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+
+  // Spacebar support
+  if (event.code === 'Space') {
+    event.preventDefault(); // Prevent scrolling
+    playCurrentSound();
+  }
+});
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    const arrowLink = document.getElementById('arrow');
+    if (arrowLink) {
+      arrowLink.click();
+    }
+  }
+});

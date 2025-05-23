@@ -28,10 +28,10 @@
 }
 
 body {
-margin-top: 0;
-margin-bottom: 0;
-margin-left: 15%;
-margin-right: 15%;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 15%;
+  margin-right: 15%;
 }
 
 
@@ -130,16 +130,22 @@ button {
   cursor: not-allowed;
 }
 
-#modes1 {
+.modes {
+  width: auto;
+  padding-left: 220pt;
+  padding-right: 220pt;
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 15fr;
+  column-gap: 5pt;
   row-gap: 10pt;
 }
 
+#modes1 {
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
 #modes2 {
-  display: grid;
   grid-template-rows: 1fr 1fr;
-  row-gap: 10pt;
 }
 
 .modes a {
@@ -171,3 +177,20 @@ button {
 .subheader h2 {
   font-size: 14pt;
 }
+
+p {
+  color: white;
+  font-family: sans-serif;
+  font-weight: bold;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 35pt;
+}
+
+/*
+#frontpage {
+  margin-left: 30%;
+  margin-right: 30%;
+} */

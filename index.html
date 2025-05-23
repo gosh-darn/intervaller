@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <title>Intervallspill</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
   </head>
-  <body>
+  <body id="frontpage">
 
     <div class="frontpageheader">
       <h1>Lær deg intervallene!</h1>
@@ -16,8 +17,12 @@
     </div>
 
     <div class="modes" id="modes1">
-      <a href="c-sekvens-1-oktav">C, sekvens, 1 oktav</a>
-      <a href="c-sekvens-2-oktaver">C, sekvens, 2 oktaver</a>
+      <p>1</p>
+      <a id="option-1a" href="c-sekvens-1-oktav">C • sekvens • 1 oktav</a>
+      <p>2</p>
+      <a id="option-1b" href="c-sekvens-2-oktaver">C • sekvens • 2 oktaver</a>
+      <p>3</p>
+      <a id="option-1c" href="c-samtidig-1-oktav">C • samtidig • 1 oktav</a>
     </div>
 
     <div class="frontpageheader">
@@ -29,9 +34,31 @@
     </div>
 
     <div class="modes" id="modes1">
-      <a href="c-sekvens-jazzfirklanger">C, sekvens, jazzfirklanger</a>
-      <a href="c-samtidig-jazzfirklanger">C, samtidig, jazzfirklanger</a>
+      <p>4</p>
+      <a id="option-2a" href="c-sekvens-jazzfirklanger">C • sekvens • jazzfirklanger</a>
+      <p>5</p>
+      <a id="option-2b" href="c-samtidig-jazzfirklanger">C • samtidig • jazzfirklanger</a>
     </div>
+
+    <script>
+      document.addEventListener('keydown', function(event) {
+        const keyMap = {
+          '1': 'option-1a',
+          '2': 'option-1b',
+          '3': 'option-1c',
+          '4': 'option-2a',
+          '5': 'option-2b'
+        };
+
+        const linkId = keyMap[event.key];
+        if (linkId) {
+          const link = document.getElementById(linkId);
+          if (link) {
+            link.click();
+          }
+        }
+      });
+    </script>
 
   </body>
 </html>
