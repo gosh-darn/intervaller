@@ -1,0 +1,156 @@
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #111;
+  }
+  a:hover {
+    border-color: rgba(255, 255, 255, .5);
+  }
+  button:hover {
+    border-color: rgba(255, 255, 255, .5);
+  }
+}
+
+/* Light mode styles */
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: #c20e33;
+  }
+  a:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  button:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+}
+
+body {
+margin-top: 0;
+margin-bottom: 0;
+margin-left: 15%;
+margin-right: 15%;
+}
+
+
+h1 {
+  color: white;
+  text-align: center;
+  font-family: sans-serif;
+  font-weight: 800;
+  font-size: 30pt;
+  text-transform: uppercase;
+  letter-spacing: 5%;
+  line-height: 30pt;
+  margin: 0;
+}
+
+h2 {
+  color: white;
+  text-align: center;
+  font-family: sans-serif;
+  font-weight: 800;
+  font-size: 20pt;
+  text-transform: uppercase;
+  letter-spacing: 5%;
+}
+
+#feedback {
+  transition: opacity 2s;
+  opacity: 1;
+}
+
+a[style*="pointer-events: none"] {
+  cursor: not-allowed;
+}
+
+div {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+a {
+  border-style: solid;
+  border-color: white;
+  border-width: 2pt;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  font-family: sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-top: 7pt;
+  padding-bottom: 8pt;
+  font-size: 14pt;
+}
+
+button {
+  border-style: solid;
+  border-color: white;
+  border-width: 2pt;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  font-family: sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-top: 7pt;
+  padding-bottom: 8pt;
+  font-size: 14pt;
+  background: none;
+  cursor: pointer;
+}
+
+#play {
+  margin-top: 60pt;
+}
+
+#collection {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  column-gap: 10pt;
+  row-gap: 10pt;
+}
+
+#buttons {
+  margin-top: 60pt;
+}
+
+#playButton {
+  padding: 8pt;
+}
+
+#playButton.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#modes {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  row-gap: 10pt;
+}
+
+#modes a {
+  padding-left: 15pt;
+  padding-right: 15pt;
+}
+
+#arrow {
+  border-style: none;
+}
+
+#return {
+  justify-content: flex-start;
+  margin-top: 10pt;
+}
+
+#arrow:hover {
+  opacity: 0.5;
+}
+
+#mainHeader {
+  margin-top: 60pt;
+}
