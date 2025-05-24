@@ -15,22 +15,54 @@ function getRandomFilePath() {
   previousAnswer = randomIndex;
   currentAnswer = randomIndex;
 
-  return `../lyd-intervaller-c-sekvens/${String(randomIndex).padStart(2, '0')}.flac`;
+  return `../lyd-intervaller-c-sekvens/${String(randomIndex).padStart(2, '0')}.opus`;
 }
 
-function playCurrentSound() {
+async function playCurrentSound() {
   if (isResetting) return; // Prevent action while resetting
+
+  let filePath;
   if (currentAnswer === null) {
-    const filePath = getRandomFilePath();
-    const audio = new Audio(filePath);
-    audio.play();
+    filePath = getRandomFilePath();
     isGuessing = true;
   } else {
-    const filePath = `../lyd-intervaller-c-sekvens/${String(currentAnswer).padStart(2, '0')}.flac`;
-    const audio = new Audio(filePath);
-    audio.play();
+    filePath = `../lyd-intervaller-c-sekvens/${String(currentAnswer).padStart(2, '0')}.opus`;
+  }
+
+  try {
+    const context = new (window.AudioContext || window.webkitAudioContext)();
+
+    // Fetch the audio file
+    const response = await fetch(filePath);
+    const arrayBuffer = await response.arrayBuffer();
+
+    // Decode audio data
+    const audioBuffer = await context.decodeAudioData(arrayBuffer);
+
+    // Create a buffer source
+    const source = context.createBufferSource();
+    source.buffer = audioBuffer;
+
+    // Create gain node for fade-in
+    const gainNode = context.createGain();
+
+    // Connect nodes: source -> gain -> destination
+    source.connect(gainNode).connect(context.destination);
+
+    // Start with gain 0 (mute)
+    gainNode.gain.setValueAtTime(0, context.currentTime);
+
+    // Ramp up gain to 1 over 0.02 seconds (20 ms fade-in)
+    gainNode.gain.linearRampToValueAtTime(1, context.currentTime + 0.02);
+
+    // Start playback immediately
+    source.start();
+
+  } catch (error) {
+    console.error('Error playing audio:', error);
   }
 }
+
 
 function showFeedback(message, reset = false) {
   const feedback = document.getElementById('feedback');
