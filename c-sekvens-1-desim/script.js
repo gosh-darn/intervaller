@@ -9,7 +9,7 @@ function getRandomFilePath() {
   let randomIndex;
 
   do {
-    randomIndex = Math.floor(Math.random() * 24) + 1;
+    randomIndex = Math.floor(Math.random() * 16) + 1;
   } while (randomIndex === previousAnswer);
 
   previousAnswer = randomIndex;
@@ -105,7 +105,7 @@ function disableLink(id) {
 }
 
 function enableAllLinks() {
-  for (let i = 1; i <= 24; i++) {
+  for (let i = 1; i <= 16; i++) {
     const link = document.getElementById(String(i));
     link.style.pointerEvents = 'auto';
     link.style.opacity = '1';
@@ -117,7 +117,7 @@ document.getElementById('playButton').addEventListener('click', function (event)
   playCurrentSound();
 });
 
-for (let i = 1; i <= 24; i++) {
+for (let i = 1; i <= 16; i++) {
   document.getElementById(String(i)).addEventListener('click', function (event) {
     event.preventDefault();
     if (!isGuessing || isResetting) return;

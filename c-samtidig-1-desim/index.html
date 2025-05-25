@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="no" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title>Intervallspill</title>
@@ -10,7 +10,7 @@
 
     <div id="return">
       <a id="arrow" href="../">
-        <svg viewBox="0 0 50 50" width="25pt" height="25pt">
+        <svg class="arrowSVG" viewBox="0 0 50 50">
           <g fill="none" stroke-width="4pt" stroke="white">
             <polyline points="5,25 45,25"/>
             <polyline points="25,5 5,25 25,45"/>
@@ -23,16 +23,16 @@
       <h1 id="feedback">Gjett intervallet!</h1>
     </div>
 
-    <div id="play">
+    <div id="play" class="playElement">
       <button id="playButton">
-        <svg viewBox="0 0 55 50" width="55pt" height="50pt">
+        <svg class="playSVG" viewBox="0 0 55 50">
           <polygon points="9,6 47,25 9,44" fill="white"/>
         </svg>
       </button>
     </div>
 
-    <div id="buttons">
-      <div id="collection">
+    <div id="buttons" class="playElement">
+      <div class="collection collection-1d">
         <button id="1">Liten sekund</button>
         <button id="2">Stor sekund</button>
         <button id="3">Liten ters</button>
@@ -49,14 +49,6 @@
         <button id="14">Stor none</button>
         <button id="15">Liten desim</button>
         <button id="16">Stor desim</button>
-        <button id="17">Undesim</button>
-        <button id="18">Forstørret undesim</button>
-        <button id="19">Duodesim</button>
-        <button id="20">Liten tredesim</button>
-        <button id="21">Stor tredesim</button>
-        <button id="22">Liten kvartdesim</button>
-        <button id="23">Stor kvartdesim</button>
-        <button id="24">Kvintdesim</button>
       </div>
     </div>
     <script src="script.js"></script>
