@@ -3,19 +3,29 @@
   body {
     background-color: #111;
   }
+}
+
+@media (prefers-color-scheme: dark) AND (orientation: landscape) {
   a:hover {
     border-color: rgba(255, 255, 255, .5);
   }
   button:hover {
     border-color: rgba(255, 255, 255, .5);
   }
+  #arrow:hover {
+    opacity: 0.5;
+  }
 }
+
 
 /* Light mode styles */
 @media (prefers-color-scheme: light) {
   body {
     background-color: #c20e33;
   }
+}
+
+@media (prefers-color-scheme: light) AND (orientation: landscape) {
   a:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
@@ -174,10 +184,6 @@ button {
 #return {
   justify-content: flex-start;
   margin-top: 10pt;
-}
-
-#arrow:hover {
-  opacity: 0.5;
 }
 
 .frontpageheader {
