@@ -159,13 +159,12 @@ button {
   padding-left: 220pt;
   padding-right: 220pt;
   display: grid;
-  grid-template-columns: 1fr 15fr;
-  column-gap: 5pt;
   row-gap: 10pt;
+  grid-template-columns: 1fr;
 }
 
 #modes1 {
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
 }
 
 #modes2 {
@@ -299,13 +298,12 @@ p {
   .modes {
     padding-left: 0;
     padding-right: 0;
-    column-gap: 1.55vw;
     row-gap: 3.2vw;
   }
 
   .modes a {
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 5vw;
+    padding-right: 5vw;
   }
 
   #return {
@@ -324,11 +322,6 @@ p {
 
   .subheader h2 {
     font-size: 4vw;
-  }
-
-  p {
-    font-size: 3.5vw;
-    line-height: 15vw;
   }
 
   .playSVG {

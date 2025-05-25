@@ -1,9 +1,19 @@
+function disableAllLinks() {
+  for (let i = 1; i <= 6; i++) {
+    const link = document.getElementById(String(i));
+    link.style.pointerEvents = 'none';
+    link.style.opacity = '0.4';
+  }
+}
+
 let currentAnswer = null;
 let previousAnswer = null;
 let isGuessing = false;
 let isResetting = false;
 const originalText = document.getElementById('feedback').textContent;
 const guessedLinks = new Set();
+
+disableAllLinks(); // 🔒 Initially disable all guess buttons
 
 function getRandomFilePath() {
   let randomIndex;
@@ -25,6 +35,7 @@ async function playCurrentSound() {
   if (currentAnswer === null) {
     filePath = getRandomFilePath();
     isGuessing = true;
+    enableAllLinks(); // ✅ Enable guessing links after first play
   } else {
     filePath = `../lyd-akkorder-c-samtidig/${String(currentAnswer).padStart(2, '0')}.opus`;
   }
