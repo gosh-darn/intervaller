@@ -6,6 +6,7 @@ function disableAllLinks() {
   }
 }
 
+let previousLetter = null;
 let currentFilePath = null;
 let currentAnswer = null;
 let previousAnswer = null;
@@ -18,17 +19,17 @@ disableAllLinks(); // 🔒 Initially disable all guess buttons
 
 function getRandomFilePath() {
   const letters = 'abcdefghijkl';
-  let randomIndex;
+  let randomIndex, randomLetter;
 
-  // Pick a number between 1 and 16 that's different from the previous one
   do {
     randomIndex = Math.floor(Math.random() * 16) + 1;
-  } while (randomIndex === previousAnswer);
+    randomLetter = letters[Math.floor(Math.random() * letters.length)];
+  } while (randomIndex === previousAnswer && randomLetter === previousLetter);
 
   previousAnswer = randomIndex;
+  previousLetter = randomLetter;
   currentAnswer = randomIndex;
 
-  const randomLetter = letters[Math.floor(Math.random() * letters.length)];
   currentFilePath = `../lyd-intervaller-fiss3-f4-samtidig/${randomLetter}${String(randomIndex).padStart(2, '0')}.opus`;
 
   return currentFilePath;
