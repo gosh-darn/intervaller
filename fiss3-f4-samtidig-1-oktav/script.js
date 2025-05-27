@@ -30,7 +30,7 @@ function getRandomFilePath() {
   previousLetter = randomLetter;
   currentAnswer = randomIndex;
 
-  currentFilePath = `../lyd-intervaller-fiss3-f4-samtidig/${randomLetter}${String(randomIndex).padStart(2, '0')}.opus`;
+  currentFilePath = `../lyd-intervaller-fiss3-f4-samtidig/${String(randomIndex).padStart(2, '0')}${randomLetter}.opus`;
 
   return currentFilePath;
 }
