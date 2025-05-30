@@ -68,6 +68,20 @@ h2 {
   max-height: 5000em;
 }
 
+h3 {
+  color: #ccc;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 0;
+  letter-spacing: 10%;
+  font-size: 10pt;
+}
+
+#githubLink {
+  text-align: center;
+}
+
 #feedback {
   transition: opacity 2s;
   opacity: 1;
@@ -342,11 +356,12 @@ p {
 
   #footer p {
     font-size: 3.3vw;
-    line-height: 3.3vw;
+    line-height: 4vw;
   }
 
   #footer {
     margin-top: 20vw;
+    margin-bottom: 5vw;
   }
 
   #githubLink a {
@@ -365,4 +380,9 @@ p {
    width: 5vw;
    height: 5vw;
    accent-color: #333;
+ }
+
+ h3 {
+   font-size: 4vw;
+ }
 }

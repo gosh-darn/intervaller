@@ -25,7 +25,7 @@ function getRandomFilePath() {
   previousAnswer = randomIndex;
   currentAnswer = randomIndex;
 
-  return `../lyd-akkorder-c-sekvens/${String(randomIndex).padStart(2, '0')}.opus`;
+  return `../lyd-akkorder-harmonisk-c/${String(randomIndex).padStart(2, '0')}.opus`;
 }
 
 async function playCurrentSound() {
@@ -37,7 +37,7 @@ async function playCurrentSound() {
     isGuessing = true;
     enableAllLinks(); // ✅ Enable guessing links after first play
   } else {
-    filePath = `../lyd-akkorder-c-sekvens/${String(currentAnswer).padStart(2, '0')}.opus`;
+    filePath = `../lyd-akkorder-harmonisk-c/${String(currentAnswer).padStart(2, '0')}.opus`;
   }
 
   try {

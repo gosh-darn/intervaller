@@ -6,21 +6,6 @@ function disableAllLinks() {
   }
 }
 
-function getAllowedIndicesFromCheckboxes() {
-  const allowed = [];
-
-  for (let i = 1; i <= 16; i++) {
-    const checkbox = document.getElementById(`${i}a`);
-    if (checkbox && checkbox.checked) {
-      allowed.push(i);
-    }
-  }
-
-  return allowed;
-}
-
-let previousLetter = null;
-let currentFilePath = null;
 let currentAnswer = null;
 let previousAnswer = null;
 let isGuessing = false;
@@ -31,41 +16,28 @@ const guessedLinks = new Set();
 disableAllLinks(); // 🔒 Initially disable all guess buttons
 
 function getRandomFilePath() {
-  const letters = 'abcdefghijkl';
-  const allowedIndices = getAllowedIndicesFromCheckboxes();
-
-  if (allowedIndices.length === 0) {
-    alert("Please select at least one sound to enable.");
-    return null;
-  }
-
-  let randomIndex, randomLetter;
+  let randomIndex;
 
   do {
-    randomIndex = allowedIndices[Math.floor(Math.random() * allowedIndices.length)];
-    randomLetter = letters[Math.floor(Math.random() * letters.length)];
-  } while (randomIndex === previousAnswer && randomLetter === previousLetter);
+    randomIndex = Math.floor(Math.random() * 16) + 1;
+  } while (randomIndex === previousAnswer);
 
   previousAnswer = randomIndex;
-  previousLetter = randomLetter;
   currentAnswer = randomIndex;
 
-  currentFilePath = `../lyd-intervaller-fiss3-f4-samtidig/${String(randomIndex).padStart(2, '0')}${randomLetter}.opus`;
-
-  return currentFilePath;
+  return `../lyd-intervaller-harmonisk-c/${String(randomIndex).padStart(2, '0')}.opus`;
 }
 
-
 async function playCurrentSound() {
-  if (isResetting) return;
+  if (isResetting) return; // Prevent action while resetting
 
   let filePath;
   if (currentAnswer === null) {
     filePath = getRandomFilePath();
     isGuessing = true;
-    enableAllLinks();
+    enableAllLinks(); // ✅ Enable guessing links after first play
   } else {
-    filePath = currentFilePath;
+    filePath = `../lyd-intervaller-harmonisk-c/${String(currentAnswer).padStart(2, '0')}.opus`;
   }
 
   try {
@@ -144,17 +116,10 @@ function disableLink(id) {
 }
 
 function enableAllLinks() {
-  const allowed = getAllowedIndicesFromCheckboxes();
-
   for (let i = 1; i <= 16; i++) {
     const link = document.getElementById(String(i));
-    if (allowed.includes(i)) {
-      link.style.pointerEvents = 'auto';
-      link.style.opacity = '1';
-    } else {
-      link.style.pointerEvents = 'none';
-      link.style.opacity = '0.4';
-    }
+    link.style.pointerEvents = 'auto';
+    link.style.opacity = '1';
   }
 }
 
@@ -202,10 +167,3 @@ document.addEventListener('keydown', function(event) {
     }
   }
 });
-
-for (let i = 1; i <= 16; i++) {
-  const checkbox = document.getElementById(`${i}a`);
-  if (checkbox) {
-    checkbox.addEventListener('change', enableAllLinks);
-  }
-}

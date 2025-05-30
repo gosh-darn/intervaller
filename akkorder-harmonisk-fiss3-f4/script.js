@@ -1,11 +1,13 @@
 function disableAllLinks() {
-  for (let i = 1; i <= 16; i++) {
+  for (let i = 1; i <= 6; i++) {
     const link = document.getElementById(String(i));
     link.style.pointerEvents = 'none';
     link.style.opacity = '0.4';
   }
 }
 
+let previousLetter = null;
+let currentFilePath = null;
 let currentAnswer = null;
 let previousAnswer = null;
 let isGuessing = false;
@@ -16,28 +18,34 @@ const guessedLinks = new Set();
 disableAllLinks(); // 🔒 Initially disable all guess buttons
 
 function getRandomFilePath() {
-  let randomIndex;
+  const letters = 'abcdefghijkl';
+  let randomIndex, randomLetter;
 
   do {
-    randomIndex = Math.floor(Math.random() * 16) + 1;
-  } while (randomIndex === previousAnswer);
+    randomIndex = Math.floor(Math.random() * 6) + 1;
+    randomLetter = letters[Math.floor(Math.random() * letters.length)];
+  } while (randomIndex === previousAnswer && randomLetter === previousLetter);
 
   previousAnswer = randomIndex;
+  previousLetter = randomLetter;
   currentAnswer = randomIndex;
 
-  return `../lyd-intervaller-c-samtidig/${String(randomIndex).padStart(2, '0')}.opus`;
+  currentFilePath = `../lyd-akkorder-harmonisk-fiss3-f4/${String(randomIndex).padStart(2, '0')}${randomLetter}.opus`;
+
+  return currentFilePath;
 }
 
+
 async function playCurrentSound() {
-  if (isResetting) return; // Prevent action while resetting
+  if (isResetting) return;
 
   let filePath;
   if (currentAnswer === null) {
     filePath = getRandomFilePath();
     isGuessing = true;
-    enableAllLinks(); // ✅ Enable guessing links after first play
+    enableAllLinks();
   } else {
-    filePath = `../lyd-intervaller-c-samtidig/${String(currentAnswer).padStart(2, '0')}.opus`;
+    filePath = currentFilePath;
   }
 
   try {
@@ -116,7 +124,7 @@ function disableLink(id) {
 }
 
 function enableAllLinks() {
-  for (let i = 1; i <= 16; i++) {
+  for (let i = 1; i <= 6; i++) {
     const link = document.getElementById(String(i));
     link.style.pointerEvents = 'auto';
     link.style.opacity = '1';
@@ -128,7 +136,7 @@ document.getElementById('playButton').addEventListener('click', function (event)
   playCurrentSound();
 });
 
-for (let i = 1; i <= 16; i++) {
+for (let i = 1; i <= 6; i++) {
   document.getElementById(String(i)).addEventListener('click', function (event) {
     event.preventDefault();
     if (!isGuessing || isResetting) return;

@@ -1,5 +1,5 @@
 function disableAllLinks() {
-  for (let i = 1; i <= 6; i++) {
+  for (let i = 1; i <= 16; i++) {
     const link = document.getElementById(String(i));
     link.style.pointerEvents = 'none';
     link.style.opacity = '0.4';
@@ -22,7 +22,7 @@ function getRandomFilePath() {
   let randomIndex, randomLetter;
 
   do {
-    randomIndex = Math.floor(Math.random() * 6) + 1;
+    randomIndex = Math.floor(Math.random() * 16) + 1;
     randomLetter = letters[Math.floor(Math.random() * letters.length)];
   } while (randomIndex === previousAnswer && randomLetter === previousLetter);
 
@@ -30,7 +30,7 @@ function getRandomFilePath() {
   previousLetter = randomLetter;
   currentAnswer = randomIndex;
 
-  currentFilePath = `../lyd-akkorder-fiss3-f4-samtidig/${String(randomIndex).padStart(2, '0')}${randomLetter}.opus`;
+  currentFilePath = `../lyd-intervaller-harmonisk-fiss3-f4/${String(randomIndex).padStart(2, '0')}${randomLetter}.opus`;
 
   return currentFilePath;
 }
@@ -124,7 +124,7 @@ function disableLink(id) {
 }
 
 function enableAllLinks() {
-  for (let i = 1; i <= 6; i++) {
+  for (let i = 1; i <= 16; i++) {
     const link = document.getElementById(String(i));
     link.style.pointerEvents = 'auto';
     link.style.opacity = '1';
@@ -136,7 +136,7 @@ document.getElementById('playButton').addEventListener('click', function (event)
   playCurrentSound();
 });
 
-for (let i = 1; i <= 6; i++) {
+for (let i = 1; i <= 16; i++) {
   document.getElementById(String(i)).addEventListener('click', function (event) {
     event.preventDefault();
     if (!isGuessing || isResetting) return;
