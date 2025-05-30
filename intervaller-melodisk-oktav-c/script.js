@@ -25,7 +25,7 @@ function getRandomFilePath() {
   previousAnswer = randomIndex;
   currentAnswer = randomIndex;
 
-  return `../lyd-akkorder-melodisk-c/${String(randomIndex).padStart(2, '0')}.opus`;
+  return `../lyd-intervaller-melodisk-c/${String(randomIndex).padStart(2, '0')}.opus`;
 }
 
 async function playCurrentSound() {
@@ -37,7 +37,7 @@ async function playCurrentSound() {
     isGuessing = true;
     enableAllLinks(); // ✅ Enable guessing links after first play
   } else {
-    filePath = `../lyd-akkorder-melodisk-c/${String(currentAnswer).padStart(2, '0')}.opus`;
+    filePath = `../lyd-intervaller-melodisk-c/${String(currentAnswer).padStart(2, '0')}.opus`;
   }
 
   try {
