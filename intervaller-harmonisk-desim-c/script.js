@@ -6,6 +6,10 @@ function disableAllLinks() {
   }
 }
 
+let audioContext = null;
+let currentSource = null;
+let currentGain = null;
+
 let currentAnswer = null;
 let previousAnswer = null;
 let isGuessing = false;
@@ -41,39 +45,42 @@ async function playCurrentSound() {
   }
 
   try {
-    const context = new (window.AudioContext || window.webkitAudioContext)();
+      if (!audioContext) {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      }
 
-    // Fetch the audio file
-    const response = await fetch(filePath);
-    const arrayBuffer = await response.arrayBuffer();
+      // Fade out and stop any currently playing audio
+      if (currentSource && currentGain) {
+        const now = audioContext.currentTime;
+        currentGain.gain.cancelScheduledValues(now);
+        currentGain.gain.setValueAtTime(currentGain.gain.value, now);
+        currentGain.gain.linearRampToValueAtTime(0, now + 0.1); // 100ms fade-out
+        currentSource.stop(now + 0.1); // Stop after fade-out
+      }
 
-    // Decode audio data
-    const audioBuffer = await context.decodeAudioData(arrayBuffer);
+      // Fetch new audio
+      const response = await fetch(filePath);
+      const arrayBuffer = await response.arrayBuffer();
+      const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
 
-    // Create a buffer source
-    const source = context.createBufferSource();
-    source.buffer = audioBuffer;
+      const source = audioContext.createBufferSource();
+      source.buffer = audioBuffer;
 
-    // Create gain node for fade-in
-    const gainNode = context.createGain();
+      const gainNode = audioContext.createGain();
+      gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+      gainNode.gain.linearRampToValueAtTime(1, audioContext.currentTime + 0.02); // Fade-in
 
-    // Connect nodes: source -> gain -> destination
-    source.connect(gainNode).connect(context.destination);
+      source.connect(gainNode).connect(audioContext.destination);
+      source.start();
 
-    // Start with gain 0 (mute)
-    gainNode.gain.setValueAtTime(0, context.currentTime);
+      // Track current source and gain
+      currentSource = source;
+      currentGain = gainNode;
 
-    // Ramp up gain to 1 over 0.02 seconds (20 ms fade-in)
-    gainNode.gain.linearRampToValueAtTime(1, context.currentTime + 0.02);
-
-    // Start playback immediately
-    source.start();
-
-  } catch (error) {
-    console.error('Error playing audio:', error);
+    } catch (error) {
+      console.error('Error playing audio:', error);
+    }
   }
-}
-
 
 function showFeedback(message, reset = false) {
   const feedback = document.getElementById('feedback');
