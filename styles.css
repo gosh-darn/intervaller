@@ -1,3 +1,8 @@
+html, body {
+  overscroll-behavior-y: none;
+  height: 100%;
+}
+
 /* Dark mode styles */
 @media (prefers-color-scheme: dark) {
   body {
