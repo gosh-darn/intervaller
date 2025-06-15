@@ -352,6 +352,11 @@ input {
   }
 
   h2 {
+    font-size: 4vw;
+  
+  }
+  
+  .subheader h2 {
     font-size: 7vw;
   }
 
