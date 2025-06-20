@@ -1,6 +1,5 @@
 html, body {
   overscroll-behavior-y: none;
-  height: 100%;
 }
 
 /* Dark mode styles */
@@ -358,9 +357,9 @@ input {
 
   h2 {
     font-size: 4vw;
-  
+
   }
-  
+
   .subheader h2 {
     font-size: 5.5vw;
   }
