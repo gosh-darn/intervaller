@@ -105,6 +105,7 @@ a[style*="pointer-events: none"] {
   display: flex;
   width: 100%;
   justify-content: center;
+  margin-bottom: 120pt;
 }
 
 a {
@@ -357,7 +358,6 @@ input {
 
   h2 {
     font-size: 4vw;
-
   }
 
   .subheader h2 {
@@ -403,6 +403,10 @@ input {
 
  h3 {
    font-size: 4vw;
+ }
+
+ #sliderbox {
+   margin-bottom: 20vw
  }
 
   input[type="range"] {
