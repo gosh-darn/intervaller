@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="no" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Akkordspill</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  </head>
+  <body>
+
+    <div id="return">
+      <a id="arrow" href="../">
+        <svg class="arrowSVG" viewBox="0 0 50 50">
+          <g fill="none" stroke-width="4pt" stroke="white">
+            <polyline points="5,25 45,25"/>
+            <polyline points="25,5 5,25 25,45"/>
+          </g>
+        </svg>
+      </a>
+    </div>
+
+
+    <div class="header">
+      <h1 id="feedback">Gjett akkorden!</h1>
+    </div>
+
+    <div id="play" class="playElement">
+      <button id="playButton">
+        <svg class="playSVG" viewBox="0 0 55 50">
+          <polygon points="9,6 47,25 9,44" fill="white"/>
+        </svg>
+      </button>
+    </div>
+
+    <div id="buttons" class="playElement">
+      <div class="collection collection-j4">
+        <button id="1">Dur syv</button>
+        <button id="2">Moll syv</button>
+        <button id="3">Moll syv (forminsket kvint)</button>
+        <button id="4">Dur maj syv</button>
+        <button id="5">Moll maj syv</button>
+        <button id="6">Forminsket syv</button>
+      </div>
+    </div>
+    
+    <div class="playElement">
+      <h2>Valgt grunntone: <span id="grunntone">C</span></h2>
+      <div id="sliderbox">
+        <input id="slider" type="range" min="1" max="12" value="7">
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+
+    <script>
+          const noteNames = ['F#', 'G', 'G#', 'A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F'];
+      const slider = document.getElementById('slider');
+      const grunntoneDisplay = document.getElementById('grunntone');
+
+      // Initial update
+      grunntoneDisplay.textContent = noteNames[parseInt(slider.value, 10) - 1];
+
+      // Update on slider change
+      slider.addEventListener('input', () => {
+        const index = parseInt(slider.value, 10) - 1;
+        grunntoneDisplay.textContent = noteNames[index];
+      });
+    </script>
+  </body>
+</html>
