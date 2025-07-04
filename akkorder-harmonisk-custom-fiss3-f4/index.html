@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="no" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Akkordspill</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  </head>
+  <body>
+
+    <div id="return">
+      <a id="arrow" href="../">
+        <svg class="arrowSVG" viewBox="0 0 50 50">
+          <g fill="none" stroke-width="4pt" stroke="white">
+            <polyline points="5,25 45,25"/>
+            <polyline points="25,5 5,25 25,45"/>
+          </g>
+        </svg>
+      </a>
+    </div>
+
+
+    <div class="header">
+      <h1 id="feedback">Gjett akkorden!</h1>
+    </div>
+
+    <div id="play" class="playElement">
+      <button id="playButton">
+        <svg class="playSVG" viewBox="0 0 55 50">
+          <polygon points="9,6 47,25 9,44" fill="white"/>
+        </svg>
+      </button>
+    </div>
+
+    <div id="buttons" class="playElement">
+      <div class="collection collection-j4">
+        <button id="1">Dur syv</button>
+        <button id="2">Moll syv</button>
+        <button id="3">Moll syv (forminsket kvint)</button>
+        <button id="4">Dur maj syv</button>
+        <button id="5">Moll maj syv</button>
+        <button id="6">Forminsket syv</button>
+      </div>
+    </div>
+
+    <div id="checkboxes" class="playElement">
+      <div class="collection collection-1d">
+        <div class="box">
+          <input id="1a" type="checkbox">
+          <span class="boxtext">Dur syv</span>
+        </div>
+        <div class="box">
+          <input id="2a" type="checkbox">
+          <span class="boxtext">Moll syv</span>
+        </div>
+        <div class="box">
+          <input id="3a" type="checkbox">
+          <span class="boxtext">Moll syv (forminsket kvint)</span>
+        </div>
+        <div class="box">
+          <input id="4a" type="checkbox">
+          <span class="boxtext">Dur maj syv</span>
+        </div>
+        <div class="box">
+          <input id="5a" type="checkbox">
+          <span class="boxtext">Moll maj syv</span>
+        </div>
+        <div class="box">
+          <input id="6a" type="checkbox">
+          <span class="boxtext">Forminsket syv</span>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
