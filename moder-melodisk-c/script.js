@@ -1,5 +1,5 @@
 function disableAllLinks() {
-  for (let i = 1; i <= 16; i++) {
+  for (let i = 1; i <= 7; i++) {
     const link = document.getElementById(String(i));
     link.style.pointerEvents = 'none';
     link.style.opacity = '0.4';
@@ -23,13 +23,13 @@ function getRandomFilePath() {
   let randomIndex;
 
   do {
-    randomIndex = Math.floor(Math.random() * 16) + 1;
+    randomIndex = Math.floor(Math.random() * 7) + 1;
   } while (randomIndex === previousAnswer);
 
   previousAnswer = randomIndex;
   currentAnswer = randomIndex;
 
-  return `../lyd-intervaller-harmonisk-c/${String(randomIndex).padStart(2, '0')}.opus`;
+  return `../lyd-moder-melodisk-c/${String(randomIndex).padStart(2, '0')}.opus`;
 }
 
 async function playCurrentSound() {
@@ -41,7 +41,7 @@ async function playCurrentSound() {
     isGuessing = true;
     enableAllLinks(); //  Enable guessing links after first play
   } else {
-    filePath = `../lyd-intervaller-harmonisk-c/${String(currentAnswer).padStart(2, '0')}.opus`;
+    filePath = `../lyd-moder-melodisk-c/${String(currentAnswer).padStart(2, '0')}.opus`;
   }
 
   try {
@@ -81,6 +81,7 @@ async function playCurrentSound() {
       console.error('Error playing audio:', error);
     }
   }
+
 
 function showFeedback(message, reset = false) {
   const feedback = document.getElementById('feedback');
@@ -123,7 +124,7 @@ function disableLink(id) {
 }
 
 function enableAllLinks() {
-  for (let i = 1; i <= 16; i++) {
+  for (let i = 1; i <= 7; i++) {
     const link = document.getElementById(String(i));
     link.style.pointerEvents = 'auto';
     link.style.opacity = '1';
@@ -135,7 +136,7 @@ document.getElementById('playButton').addEventListener('click', function (event)
   playCurrentSound();
 });
 
-for (let i = 1; i <= 16; i++) {
+for (let i = 1; i <= 7; i++) {
   document.getElementById(String(i)).addEventListener('click', function (event) {
     event.preventDefault();
     if (!isGuessing || isResetting) return;

@@ -32,7 +32,7 @@ let isResetting = false;
 const originalText = document.getElementById('feedback').textContent;
 const guessedLinks = new Set();
 
-disableAllLinks(); // 🔒 Initially disable all guess buttons
+disableAllLinks(); //  Initially disable all guess buttons
 
 function getRandomFilePath() {
   const letters = 'abcdefghijkl';
@@ -126,7 +126,7 @@ function showFeedback(message, reset = false) {
 
   if (reset) {
     isResetting = true;
-    playButton.classList.add('disabled'); // 🔒 visually disable
+    playButton.classList.add('disabled'); //  visually disable
 
     setTimeout(() => {
       feedback.textContent = originalText;
@@ -137,7 +137,7 @@ function showFeedback(message, reset = false) {
       isGuessing = false;
       isResetting = false;
 
-      playButton.classList.remove('disabled'); // ✅ re-enable
+      playButton.classList.remove('disabled'); //  re-enable
       guessedLinks.clear();
       enableAllLinks();
     }, 500); // matches 1s fade for Yup

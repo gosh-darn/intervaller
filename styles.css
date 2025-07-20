@@ -179,6 +179,11 @@ button {
   grid-template-rows: 1fr;
 }
 
+.collection-m {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
 #playButton {
   padding: 8pt;
 }
@@ -325,6 +330,11 @@ input {
   .collection-j4 {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
+  }
+
+  .collection-m {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
   }
 
   #playButton {
