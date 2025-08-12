@@ -29,7 +29,7 @@ function getRandomFilePath() {
   previousAnswer = randomIndex;
   currentAnswer = randomIndex;
 
-  return `../lyd-intervaller-harmonisk-c/${String(randomIndex).padStart(2, '0')}.opus`;
+  return `../lyd-intervaller-harmonisk/${String(randomIndex).padStart(2, '0')}g.opus`;
 }
 
 async function playCurrentSound() {
@@ -41,7 +41,7 @@ async function playCurrentSound() {
     isGuessing = true;
     enableAllLinks(); //  Enable guessing links after first play
   } else {
-    filePath = `../lyd-intervaller-harmonisk-c/${String(currentAnswer).padStart(2, '0')}.opus`;
+    filePath = `../lyd-intervaller-harmonisk/${String(currentAnswer).padStart(2, '0')}g.opus`;
   }
 
   try {

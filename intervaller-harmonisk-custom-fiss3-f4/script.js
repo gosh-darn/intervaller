@@ -54,7 +54,7 @@ function getRandomFilePath() {
   previousLetter = randomLetter;
   currentAnswer = randomIndex;
 
-  currentFilePath = `../lyd-intervaller-harmonisk-fiss3-f4/${String(randomIndex).padStart(2, '0')}${randomLetter}.opus`;
+  currentFilePath = `../lyd-intervaller-harmonisk/${String(randomIndex).padStart(2, '0')}${randomLetter}.opus`;
 
   return currentFilePath;
 }
