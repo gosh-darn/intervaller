@@ -166,9 +166,20 @@ button {
 
 #playButton {
   padding: 8pt;
+  margin-right: 20pt;
+}
+
+#rollButton {
+  padding: 8pt;
 }
 
 #playButton.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#rollButton.disabled {
   pointer-events: none;
   opacity: 0.5;
   cursor: not-allowed;
@@ -222,6 +233,11 @@ p {
 }
 
 .playSVG {
+  width: 55pt;
+  height: 50pt;
+}
+
+.rollSVG {
   width: 55pt;
   height: 50pt;
 }
@@ -319,6 +335,11 @@ input {
 
   #playButton {
     padding: 2.3vw;
+    margin-right: 7vw;
+  }
+
+  #rollButton {
+    padding: 2.3vw;
   }
 
   .modes {
@@ -355,6 +376,11 @@ input {
   }
 
   .playSVG {
+    width: 18.33vw;
+    height: 16.66vw;
+  }
+
+  .rollSVG {
     width: 18.33vw;
     height: 16.66vw;
   }
